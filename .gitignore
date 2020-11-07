@@ -1,0 +1,16 @@
+# File extensions:
+*.aux
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.gz
+*.toc
+*.xdv
+*.bbl
+*.bcf
+*.blg
+*.xml
+*.xvd

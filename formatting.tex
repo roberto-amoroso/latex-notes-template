@@ -1,0 +1,342 @@
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+% For Italian language
+\usepackage[T1]{fontenc}
+\usepackage[autostyle, english = american]{csquotes}
+% LaTeX tends to require you to use
+% `` '' 
+% for double quotes and
+% ` '
+% for single quotes. The "smart quotes" will be done by the compilers.
+% if you have already typed your text with " " throughout your document you can use the csquotes package to deal with them:
+% \MakeOuterQuote{"}
+
+\renewcommand{\baselinestretch}{1.5} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+    backend=biber,
+    style=numeric,
+    sorting=none
+]{biblatex}
+
+\addbibresource{biblio.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRONT/BACK-MATTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+
+\newcommand\frontmatter{%
+    % \cleardoublepage
+  %\@mainmatterfalse
+  \pagenumbering{roman}}
+
+\newcommand\mainmatter{%
+    \cleardoublepage
+ % \@mainmattertrue
+  \pagenumbering{arabic}}
+
+\newcommand\backmatter{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+ % \@mainmatterfalse
+   }
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{blindtext}
+
+%Show paragraph in TOC
+% \setcounter{tocdepth}{3}
+
+%For position of image and tables
+\usepackage{float}
+
+\usepackage{appendix}
+\usepackage{subcaption}
+\usepackage{array,booktabs,ragged2e}
+
+\usepackage{svg}
+
+\usepackage{pdfpages} % to include PDF files
+
+\usepackage{makecell} % Line-break in table cell
+
+% Add a glossary and acronyms
+\usepackage[acronym,toc]{glossaries}
+% \usepackage[acronym,toc,seeautonumberlist]{glossaries}
+
+\makeglossaries
+\input{_chapters/glossary}
+
+%Package for work with images
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\graphicspath{{images/}}
+\usepackage{wasysym}
+
+%For stacking text, used here in autosegmental diagrams
+\usepackage{stackengine}
+
+%To combine rows in tables
+\usepackage{multirow}
+
+%geometry helps manage margins, among other things.
+\usepackage[margin=0.8in]{geometry}
+
+%Text alignment
+\usepackage{ragged2e}
+
+%Gives some extra formatting options, e.g. underlining/strikeout
+\usepackage{ulem}
+
+%Forcing linebreaks in \url like in normal text - MUST BE BEFORE IMPORTING "hyperref"
+\PassOptionsToPackage{hyphens}{url}\usepackage{url}
+%For putting links into papers, also helps make cross-references in the paper smart references
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue,]{hyperref} %smarter cross-references, these options turn links blue
+\urlstyle{same}
+
+
+%Use package/command below to create a double-spaced document, if you want one. Uncomment BOTH the package and the command (\doublespacing) to create a doublespaced document, or leave them as is to have a single-spaced document.
+\usepackage{setspace}
+\linespread{1.25}
+% \doublespacing 
+
+%paragraph formatting
+\usepackage[parfill]{parskip}
+\setlength{\parskip}{8pt} %plus 1 minus 1}
+\setlength{\parindent}{20pt}
+\usepackage{titlesec}
+
+%use for special OT tableaux symbols like bomb and sad face. must be loaded early on because it doesn't play well with some other packages
+\usepackage{fourier-orns}
+
+%Basic math symbols 
+\usepackage{pifont}
+\usepackage{amssymb}  % assumes amsmath package installed
+\usepackage{adjustbox}
+\usepackage{epsfig} % for postscript graphics files
+\usepackage{mathptmx} % assumes new font selection scheme installed
+\usepackage{amsmath} % assumes amsmath package installed
+
+% Algorithm
+% \usepackage[ruled,vlined]{algorithm2e}
+\usepackage{algorithm} 
+\usepackage[noend]{algpseudocode} 
+
+%Tables
+\usepackage[]{threeparttable}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{changepage}
+\usepackage{caption} %For table captions
+\usepackage{booktabs} %helps format tables
+
+%Fonts
+\usepackage{libertine} %A font that actually contains many IPA symbols. This is the font you see in the preview to the right.
+
+%to use these fonts, be sure that your typesetting engine is set to "XeLaTeX." In Overleaf, go to the Menu link on the top left (by the Overleaf icon), and under Settings be sure that the Compiler is set to "XeLaTeX." If you accessed this document via the Overleaf Pomona Linguistics template, all of this was already done for you.
+
+%The Pomona Linguistics Paper Template in Overleaf is already set up for this, but you may run into this problem if you start building your own documents.
+
+%highlights text with \hl{text}
+\usepackage{soul}
+
+
+%Changes the \maketitle command to be smaller and take up less space on a page. 
+\makeatletter         
+\def\@maketitle{   % custom maketitle 
+\noindent {\Large \bfseries \color{black} \@title} \\ 
+\hrule \noindent \@author \\ 
+\@date \\
+\ifdefined \link
+\link
+\else
+\textit{\color{blue} -- please, insert here the link of the paper --}
+\fi \\
+}
+% \makeatother
+
+
+%For using Greek letters outside of math mode.
+\usepackage{textgreek}
+
+%Defining COLORS
+% \usepackage[dvipsnames,table,xcdraw]{xcolor}
+\definecolor{azure}{rgb}{0.0, 0.5, 1.0}
+\definecolor{darkred}{rgb}{0.89, 0.0, 0.13}
+\definecolor{darkdarkred}{rgb}{0.64, 0.0, 0.0}
+
+%Table
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+
+%New tag for highlight important parts of the text
+\newcommand{\important}[1]{\textbf{\textcolor{darkdarkred}{\hl{#1}}}}
+
+% Add Appendix
+\usepackage{appendix}
+
+% - Customize header and footer for each page
+\usepackage{fancyhdr}
+\usepackage[bottom]{footmisc}
+
+
+%%%%%%%%%%%%
+%% This is the end of the PREAMBLE
+%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  Some util (custom) commands  %%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  POSSIBLE TEXT SIZES :
+% \Huge
+% \huge
+% \LARGE
+% \Large
+% \large
+% \normalsize (default)
+% \small
+% \footnotesize
+% \scriptsize
+% \tiny
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \renewcommand\TPTtagStyle{\textit}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% MATH DECLARATIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\newcommand{\expnumber}[2]{{#1}\mathrm{e}{#2}}
+% \DeclareMathOperator*{\argmax}{argmax}
+% \DeclareMathOperator*{\argmin}{argmin}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALGORITHM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\algblock[input]{Input}{EndInput}
+\algrenewtext{Input}{\textbf{Input:}}
+\algnotext{EndInput}
+
+\algblock{Output}{EndOutput}
+\algrenewtext{Output}{\textbf{Output:}}
+\algnotext{EndOutput}
+
+\algblock{Server}{EndServer}
+\algrenewtext{Server}{\textbf{Server executes:}}
+\algnotext{EndServer}
+
+\algblock{Client}{EndClient}
+\algrenewtext{Client}{{\bf ClientUpdate($k$,$w$):}}
+\algnotext{EndClient}
+% \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+% \renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\Desc}[2]{\State \makebox[2em][l]{#1}#2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    TEXT   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \def\code#1{\texttt{#1}}
+
+% Change the style of the charapter
+% \titleformat{\chapter}
+%   [display]
+%   {\Huge\bfseries}
+%   {\huge\chaptertitlename\space\thechapter}
+%   {20pt}
+%   {\scshape}
+  
+% Remove chapter number space arising from \chapter*{} (e.g. in Abstract)
+% \titleformat{name=\chapter,numberless}{\Huge\bfseries}{}{0pt}{\scshape}
+
+% \makeatletter
+% \newcommand*{\centerfloat}{%
+%   \parindent \z@
+%   \leftskip \z@ \@plus 1fil \@minus \textwidth
+%   \rightskip\leftskip
+%   \parfillskip \z@skip}
+% \makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  Some util presets  %%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%
+%%% footnote added to the title of a chapter, a section, or similar
+%%%%%%%
+
+% \section[<title>] {<title>\footnote{I'm a footnote referred to the section} } % where title is the title of the section.
+
+
+%%%%%%%%
+%%% Insert an image aligned with the text
+%%%%%%%%%
+
+% \begin{figure}[H]
+%     \centering
+%     % \includegraphics[width=0.50\textwidth]{<name>}
+%     \includegraphics[width=\textwidth]{<name>}
+%     \caption{ --- }
+%     \label{fig:FIG_X}
+% \end{figure}
+
+%%%%%%%
+%%% Insert an image next to the text
+%%%%%%%
+
+% \begin{wrapfigure}{l}{0.45\textwidth}
+%     \centering
+%     % \hspace*{-0.25in}
+%     \includegraphics[width=0.45\textwidth]{<name>}
+%     \caption{---}
+%     \label{fig:FIG_X}
+% \end{wrapfigure}
+
+%%%%%%%
+%%% Custom Table
+%%%%%%
+
+% \begin{table}[H]
+%      \centering 
+%     {\fontsize{10}{14}\selectfont \def\arraystretch{2} 
+%      \begin{tabular}{p{0.40\textwidth}p{0.55\textwidth}}
+%     \hline
+%     \rowcolor[HTML]{EFEFEF} 
+%     \textbf{---} & \textbf{---} \\ [1ex] \hline
+%     ---
+%     &
+%     {
+%     ---
+%     \newline
+%     \begin{itemize}
+%         \setlength\itemsep{0.8em}
+%         \item ---  
+%     \end{itemize}
+%     }
+%     \\
+
+%     &
+  
+%    \\ \hline
+%     \end{tabular}}
+%     \caption{Performance metrics for accuracy validation}
+%     \label{table:TAB_1}
+% \end{table}

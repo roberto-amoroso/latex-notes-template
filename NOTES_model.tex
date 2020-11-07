@@ -1,0 +1,96 @@
+\documentclass[12pt, a4paper]{article}
+
+\input{formatting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\title{\LaTeX ~ NOTES Template by Roberto Amoroso}
+\author{Roberto Amoroso}
+\date{--- - \today}
+%%% commenting the following command, the following message will be shown: "-- please, insert here the link of the paper --". To disable this behavior read the formatting file
+\newcommand{\link}{\url{---}}
+
+% -- Modifying the header and footer of the document
+\fancyhf{}
+\makeatletter
+\let\runauthor\@author
+\let\runtitle\@title
+\makeatother
+\makeatletter
+% \lhead{\runtitle}
+\lhead{\leftmark}
+\rhead{\runauthor}
+\cfoot{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+% \renewcommand{\headrulewidth}{1pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% START %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\emergencystretch 3em
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+
+\input{_chapters/abstract}
+
+{
+  \hypersetup{hidelinks}
+  \tableofcontents
+  \listoffigures
+  \listoftables
+}
+
+\mainmatter
+
+\newcommand{\sectionbreak}{\clearpage \phantomsection}
+
+\pagestyle{fancy}
+% \renewcommand{\sectionmark}[1]{\markboth{\thesection~- ~#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MAIN CHAPTERS/SECTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{_chapters/intro}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% APPENDIX %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\sectionbreak}{\phantomsection}
+
+\input{_chapters/appendix}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% GLOSSARY/ACRONYMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The command \glossarystyle{style} must be inserted before \printglossaries. Below a list of available styles:
+
+% list. Writes the defined term in boldface font
+% altlist. Inserts newline after the term and indents the description.
+% listgroup. Group the terms based on the first letter.
+% listhypergroup. Adds hyperlinks at the top of the index.
+
+\printglossary[nonumberlist]
+% Try this when you have enough elements in the glossary
+% \printglossary[type=main,style=long]
+
+\clearpage
+
+\printglossary[type=\acronymtype,nonumberlist]
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\printbibliography[heading=bibintoc,]
+% add to the bibliography also the references not directly cited in the text but present in the ".bib" file
+\nocite{*}
+
+% \input{_chapters/TODO_brainstorming} % TODO: remove this !!!
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
